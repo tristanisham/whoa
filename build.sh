@@ -48,7 +48,7 @@ elif [[ $1 == "conf" ]]; then
             --enable-zend-max-execution-timers 
     # --with-curl --with-zlib --with-openssl --with-zip --enable-mbstring --with-mysqli --with-pdo-mysql
     make -j$(nproc)
-    sudo make install
+    make install
     # make test
 else 
     echo "Please run with cmds: 'run' or 'build'."
