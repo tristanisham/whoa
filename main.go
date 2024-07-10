@@ -43,7 +43,6 @@ var app = &opts.App{
 		{
 			Name: "fs",
 			Usage: "Start a PHP file-based server",
-			Aliases: []string{"r"},
 			Description: "Start a traditional PHP server with file-based routing",
 			Args: true,
 			ArgsUsage: " </path/to/dir>",
