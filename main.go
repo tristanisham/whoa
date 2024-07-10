@@ -1,13 +1,34 @@
 package main
 
 import (
-	"log"
+	"github.com/charmbracelet/log"
 	"net/http"
+	"os"
 
 	"github.com/dunglas/frankenphp"
+	opts "github.com/urfave/cli/v2"
 )
 
+const VERSION = "v0.0.1"
+
+var app = &opts.App{
+	Name: "Whoa",
+	Description: "Whoa is a modern PHP runtime and production webserver",
+	HelpName: "whoa",
+	Version: VERSION,
+	Copyright: "© 2024 Tristan Isham",
+	Suggest: true,
+}
+
 func main() {
+	if _, ok := os.LookupEnv("WHOA_DEBUG"); ok {
+		log.SetLevel(log.DebugLevel)
+	}
+
+	if err := app.Run(os.Args); err != nil {
+		log.Fatal(err)
+	}
+
 	if err := frankenphp.Init(); err != nil {
 		panic(err)
 	}
